@@ -1,0 +1,140 @@
+body {
+    background: lightgray;
+    color: black;
+    font: normal 16px/30px Tahoma, sans-serif;
+}
+
+input {
+    color: black;
+    font: normal 16px/30px Tahoma, sans-serif;
+    margin-bottom: 2px;
+}
+
+input[type="text"] {
+    width: 300px;
+    border: 1px solid darkgray;
+    border-radius: 3px;
+}
+
+input[type="text"]:focus {
+    background: lightyellow !important;
+}
+
+table, th, td {
+    border: 1px solid #666666;
+    padding: 5px;
+}
+
+tr:hover {
+    background: lightyellow;
+}
+
+table {
+    background: white;
+    border-radius: 5px;
+}
+
+span {
+    display: block;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin: 0 5px 0;
+    opacity: 0.5;
+    cursor: pointer;
+    border: 0px;
+}
+
+a.view span {
+    background: transparent url('../img/view.png') no-repeat center;
+}
+
+a.edit span {
+    background: transparent url('../img/edit.png') no-repeat center;
+}
+
+a.delete span {
+    background: transparent url('../img/delete.png') no-repeat center;
+}
+
+a.add span {
+    background: transparent url('../img/add.png') no-repeat center;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font: normal 16px/30px Tahoma, sans-serif;
+    line-height: 24px;
+}
+
+a:hover {
+    color: red;
+}
+
+a:hover span {
+    opacity: 1.0;
+}
+
+a {
+    position: relative;
+}
+
+.clear {
+    float: none;
+    clear: both;
+}
+
+div.newbook {
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 500px;
+    margin-bottom: 10px;
+    height: 280px;
+    display: none;
+}
+
+.align-r {
+    text-align: right;
+    float: left;
+    padding-right: 10px;
+    line-height: 36px;
+    padding-left: 40px;
+    height: 100%;
+}
+
+button {
+    padding: 3px 30px 3px;
+    background: #001f53;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0050a5;
+}
+
+div.details {
+    position: absolute;
+    top: 24px;
+    left: -174px;
+    width: 300px;
+    padding: 10px;
+    background: lightyellow;
+    color: black;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    z-index: 100;
+    -webkit-box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.75);
+}
+
+h2 {font: italic bold 22px/30px Tahoma, sans-serif; margin: 0;}
+
