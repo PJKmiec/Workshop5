@@ -3,14 +3,15 @@ package pl.coderslab.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Book;
 import pl.coderslab.service.MemoryBookService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -35,7 +36,7 @@ public class BookController {
     }
 
     // add new book
-    @RequestMapping("/add-book")
+    @PostMapping("/add-book")
     @ResponseBody
     public String addBook(Model model, HttpServletRequest request) {
         List<Book> list = memoryBookService.getList();
@@ -58,13 +59,43 @@ public class BookController {
     }
 
     // delete book by ID
-    @RequestMapping("/book-delete/{id}")
+    @DeleteMapping("/book-delete/{id}")
     @ResponseBody
     public String bookDelete(Model model, @PathVariable int id) {
         memoryBookService.deleteBook(id);
         return "";
     }
 
+    // edit book
+    @PutMapping("/book-edit/{id}")
+    @ResponseBody
+    public String addBook(Model model, @PathVariable long id, HttpServletRequest request) {
+        BufferedReader br = null;
+        String data = "";
 
+        try {
+            br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            data = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            data = java.net.URLDecoder.decode(data, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String[] parts = data.split("&");
+
+        List<Book> list = memoryBookService.getList();
+        String title = parts[1].split("=")[1];
+        String author = parts[2].split("=")[1];
+        String type = parts[3].split("=")[1];
+        String isbn = parts[4].split("=")[1];
+        String publisher = parts[5].split("=")[1];
+        Book book = new Book(id, isbn, title, author, publisher, type);
+        memoryBookService.editBook(book);
+        return "";
+    }
 }
 

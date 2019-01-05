@@ -54,7 +54,16 @@ public class MemoryBookService {
         setList(list2);
     }
 
-//    Edycje obiektu
+    // Edycja obiektu
+    public void editBook(Book book) {
+        int index = -1;
+        for (Book b : list) {
+            if (b.getId() == book.getId()) {
+                index = list.indexOf(b);
+            }
+        }
+        list.set(index, book);
+    }
 
 
 }
