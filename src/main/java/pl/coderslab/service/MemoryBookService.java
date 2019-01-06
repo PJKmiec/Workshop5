@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MemoryBookService {
+public class MemoryBookService implements BookService {
 
     private List<Book> list;
 
